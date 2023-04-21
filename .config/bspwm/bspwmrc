@@ -1,0 +1,69 @@
+#!/usr/bin/sh
+# Автострат
+
+sxhkd & # ввод с клавиатуры
+/home/nikidze/.config/polybar/launch.sh --forest & # верхняя панель
+redshift & #
+/opt/firefox/firefox & # мой любимый браузер
+/opt/Telegram/Telegram &
+xsetroot -cursor_name left_ptr & # нормальный курсор
+kitty &
+thunderbird &
+setxkbmap -option grp:caps_toggle us,ru & #переключение языка
+feh --bg-max /home/nikidze/images/wallpaper/winter.jpg & # обои
+
+#setxkbmap -option ctrl:nocaps &
+
+# Рабочие столы
+bspc monitor -d      
+
+# Что на какой стол ставим
+
+# CHAT (1)
+bspc rule -a TelegramDesktop desktop='^1' follow=on focus=on
+bspc rule -a thunderbird  desktop='^1' follow=on focus=on
+bspc rule -a discord  desktop='^1' follow=on focus=on
+
+# WEBS (2)
+bspc rule -a firefox desktop='^2' follow=on focus=on
+
+# CODE (3)
+bspc rule -a Code desktop="^3" follow=on focus=on
+
+# TERM (4)
+bspc rule -a kitty desktop='^4' follow=on focus=on
+
+# MISC (5)
+bspc rule -a cava desktop='^5' follow=on focus=on
+bspc rule -a zoom desktop='^5' follow=on focus=on
+
+#GAME (6)
+bspc rule -a Steam  desktop='^6' follow=on focus=on
+
+#прочие правила
+bspc rule -a XTerm state=floating
+
+# Рамочки и отступы
+
+bspc config border_width         1
+bspc config window_gap           5
+
+bspc config normal_border_color "#2e2e2e"
+bspc config active_border_color "#ec407a"
+bspc config focused_border_color "#ec407a"
+
+bspc config focus_follows_pointer true
+bspc config pointer_modifier	super
+
+# Отключить рамки когда только одно окно
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config paddingless_monocle	 true
+bspc config single_monocle true
+
+
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
+#bspc rule -a Chromium desktop='^2'
+#bspc rule -a mplayer2 state=floating
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off
